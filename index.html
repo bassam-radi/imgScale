@@ -3,70 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Upscaler</title>
+  <title>Site Offline</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }
-    input { margin: 10px 0; }
-    img { max-width: 80%; margin-top: 20px; border: 1px solid #ccc; }
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.25rem;
+    }
   </style>
 </head>
 <body>
-  <h1>Image Upscaler</h1>
-
-  <input type="file" id="imageInput" accept="image/*">
-  <br>
-  <button id="upscaleBtn">Upscale Image</button>
-
-  <div>
-    <img id="result" src="" alt="Upscaled image will appear here">
-  </div>
-
-  <script>
-    const imageInput = document.getElementById('imageInput');
-    const upscaleBtn = document.getElementById('upscaleBtn');
-    const resultImg = document.getElementById('result');
-    let base64Image = '';
-
-    // Convert uploaded file to base64
-    imageInput.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
-
-      const reader = new FileReader();
-      reader.onload = () => {
-        base64Image = reader.result;
-      };
-      reader.readAsDataURL(file);
-    });
-
-    // Call serverless API
-    upscaleBtn.addEventListener('click', async () => {
-      if (!base64Image) {
-        alert('Please select an image first!');
-        return;
-      }
-
-      resultImg.src = ''; // Clear previous result
-      resultImg.alt = 'Upscaling...';
-
-      try {
-        const response = await fetch('/api/upscale', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ imageUrl: base64Image })
-        });
-
-        const data = await response.json();
-
-        // Depending on the model response structure:
-        // Sometimes it's data[0] or data.image_url, adjust if needed
-        resultImg.src = data[0];
-        resultImg.alt = 'Upscaled Image';
-      } catch (err) {
-        console.error(err);
-        alert('Error upscaling image');
-      }
-    });
-  </script>
-</body>
-</html>
+  <h1>🚧 Website Offline</h1>
+  <p>The website is temporarily offline. Pleas
