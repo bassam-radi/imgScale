@@ -1,4 +1,3 @@
-import 'dotenv/config';
 
 
 module.exports = async function (req, res) {
