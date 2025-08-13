@@ -24,7 +24,9 @@ export default async function handler(req, res) {
 
     const data = await response.json();
 
-    // Return the first output image (adjust if model returns differently)
+    // <-- Log the response here
+    console.log("Hugging Face API response:", data);
+
     res.status(200).json(data);
   } catch (err) {
     console.error(err);
