@@ -1,5 +1,10 @@
+import 'dotenv/config';
+
+
 module.exports = async function (req, res) {
   // TEMPORARY LOG: Check if the environment variable exists
+
+  
   console.log("Token in environment:", process.env.HF_API_KEY);
 
   if (req.method !== "POST") {
