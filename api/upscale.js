@@ -1,4 +1,5 @@
-const fetch = require('node-fetch'); // only needed if your environment doesn't have fetch
+// Remove this line
+// const fetch = require('node-fetch');
 
 module.exports = async function (req, res) {
   if (req.method !== "POST") {
@@ -25,7 +26,6 @@ module.exports = async function (req, res) {
 
     const data = await response.json();
 
-    // Log response for debugging
     console.log("Hugging Face API response:", data);
 
     res.status(200).json(data);
