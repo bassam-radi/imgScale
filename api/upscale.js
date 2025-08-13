@@ -1,13 +1,11 @@
-export default async function handler(req, res) {
+const fetch = require('node-fetch'); // only needed if not built-in
+module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
   const { imageUrl } = req.body;
-
-  if (!imageUrl) {
-    return res.status(400).json({ error: "No image provided" });
-  }
+  if (!imageUrl) return res.status(400).json({ error: "No image provided" });
 
   try {
     const response = await fetch(
@@ -23,13 +21,9 @@ export default async function handler(req, res) {
     );
 
     const data = await response.json();
-
-    // <-- Log the response here
-    console.log("Hugging Face API response:", data);
-
     res.status(200).json(data);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Error calling Hugging Face API" });
   }
-}
+};
