@@ -1,14 +1,7 @@
-
-
 module.exports = async function (req, res) {
-  // TEMPORARY LOG: Check if the environment variable exists
+  console.log("Token:", process.env.HF_API_KEY); // temporary check
 
-  
-  console.log("Token in environment:", process.env.HF_API_KEY);
-
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
+  if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
 
   const { imageUrl } = req.body;
   if (!imageUrl) return res.status(400).json({ error: "No image provided" });
@@ -27,7 +20,6 @@ module.exports = async function (req, res) {
     );
 
     const data = await response.json();
-
     console.log("Hugging Face API response:", data);
 
     res.status(200).json(data);
